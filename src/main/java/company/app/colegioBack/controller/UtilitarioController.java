@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import company.app.colegioBack.models.Grado;
 import company.app.colegioBack.models.Modulo;
+import company.app.colegioBack.models.Nivel;
 import company.app.colegioBack.models.Pagina;
 import company.app.colegioBack.models.Perfil;
+import company.app.colegioBack.models.Seccion;
 import company.app.colegioBack.service.UtilitarioService;
 
 @RestController
@@ -68,6 +71,30 @@ public class UtilitarioController {
 			service.insertarDatosPerfil(tmp_perfil);
 			
 			service.insertarDatosPerfilesPaginas();
+			
+			List<Nivel> tmp_nivel = new ArrayList<>();
+			tmp_nivel.add(CrearNivel("Primaria"));
+			tmp_nivel.add(CrearNivel("Secundaria"));
+			
+			service.insertarNivel(tmp_nivel);
+			
+			List<Grado> tmp_grado = new ArrayList<>();
+			tmp_grado.add(CrearGrado("1"));
+			tmp_grado.add(CrearGrado("2"));
+			tmp_grado.add(CrearGrado("3"));
+			tmp_grado.add(CrearGrado("4"));
+			tmp_grado.add(CrearGrado("5"));
+			tmp_grado.add(CrearGrado("6"));
+			
+			service.insertarGrado(tmp_grado);
+			
+			List<Seccion> tmp_seccion = new ArrayList<>();
+			tmp_seccion.add(CrearSeccion("A"));
+			tmp_seccion.add(CrearSeccion("B"));
+			tmp_seccion.add(CrearSeccion("C"));
+			tmp_seccion.add(CrearSeccion("D"));
+			
+			service.insertarSeccion(tmp_seccion);
 
 		} catch (Exception e) {
 
@@ -107,6 +134,24 @@ public class UtilitarioController {
 		p.setEstado(estado);
 		p.setNombres(nombres);
 		return p;
+	}
+	
+	private Nivel CrearNivel(String nombre) {
+		Nivel n = new Nivel();
+		n.setDescripcion(nombre);
+		return n;
+	}
+	
+	private Grado CrearGrado(String nombre) {
+		Grado g = new Grado();
+		g.setDescripcion(nombre);
+		return g;
+	}
+	
+	private Seccion CrearSeccion(String nombre) {
+		Seccion s = new Seccion();
+		s.setDescripcion(nombre);
+		return s;
 	}
 
 }

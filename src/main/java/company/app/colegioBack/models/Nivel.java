@@ -15,7 +15,7 @@ public class Nivel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idNivel;
 	
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", nullable=false)
 	private String descripcion;
 
 	public Integer getIdNivel() {

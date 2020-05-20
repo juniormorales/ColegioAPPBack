@@ -1,5 +1,6 @@
 package company.app.colegioBack.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,9 +109,7 @@ public class UtilitarioServiceImpl implements UtilitarioService {
 			repoNivel.saveAll(nivel);
 		}catch(Exception e) {
 			System.out.println(this.getClass().getSimpleName() + " insertarNivel. ERROR : " + e.getMessage());
-
-		}
-		
+		}	
 	}
 
 }

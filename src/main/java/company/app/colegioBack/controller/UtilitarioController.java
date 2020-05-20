@@ -47,6 +47,7 @@ public class UtilitarioController {
 
 			List<Pagina> tmp_pagina = new ArrayList<>();
 			Pagina ga = this.CrearPagina("Gestion Alumnos", 1, "-", 0, "-", "/gestionalumnos", modAlumno);
+			Pagina ca = this.CrearPagina("Registrar Alumno", 1, "mdi mdi-pencil", 0, "-", "/registraralumno", modAlumno);
 			Pagina gc = this.CrearPagina("Cuentas y Roles", 1, "mdi  mdi-account-key", 0, "-", "/gestioncuentas", modAdmi);
 			Pagina gg = this.CrearPagina("Gestion Grados", 1, "-", 0, "-", "/gestiongrado", modGrado);
 			Pagina gas = this.CrearPagina("Gestion Asistencia", 1, "-", 0, "-", "/gestionasistencia", modAsistencia);
@@ -73,18 +74,26 @@ public class UtilitarioController {
 			service.insertarDatosPerfilesPaginas();
 			
 			List<Nivel> tmp_nivel = new ArrayList<>();
-			tmp_nivel.add(CrearNivel("Primaria"));
-			tmp_nivel.add(CrearNivel("Secundaria"));
+			Nivel niv1 = this.CrearNivel("Primaria");
+			Nivel niv2 = this.CrearNivel("Secundaria");
+			tmp_nivel.add(niv1);
+			tmp_nivel.add(niv2);
 			
 			service.insertarNivel(tmp_nivel);
 			
 			List<Grado> tmp_grado = new ArrayList<>();
-			tmp_grado.add(CrearGrado("1"));
-			tmp_grado.add(CrearGrado("2"));
-			tmp_grado.add(CrearGrado("3"));
-			tmp_grado.add(CrearGrado("4"));
-			tmp_grado.add(CrearGrado("5"));
-			tmp_grado.add(CrearGrado("6"));
+			tmp_grado.add(CrearGrado("1",niv1));
+			tmp_grado.add(CrearGrado("2",niv1));
+			tmp_grado.add(CrearGrado("3",niv1));
+			tmp_grado.add(CrearGrado("4",niv1));
+			tmp_grado.add(CrearGrado("5",niv1));
+			tmp_grado.add(CrearGrado("6",niv1));
+			
+			tmp_grado.add(CrearGrado("1",niv2));
+			tmp_grado.add(CrearGrado("2",niv2));
+			tmp_grado.add(CrearGrado("3",niv2));
+			tmp_grado.add(CrearGrado("4",niv2));
+			tmp_grado.add(CrearGrado("5",niv2));
 			
 			service.insertarGrado(tmp_grado);
 			
@@ -142,9 +151,10 @@ public class UtilitarioController {
 		return n;
 	}
 	
-	private Grado CrearGrado(String nombre) {
+	private Grado CrearGrado(String nombre, Nivel nivel) {
 		Grado g = new Grado();
 		g.setDescripcion(nombre);
+		g.setNivel(nivel);
 		return g;
 	}
 	

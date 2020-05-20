@@ -17,12 +17,11 @@ public class Clase {
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private Integer idClases;
 	
-	
-	@Column(name = "turno")
+	@Column(name = "turno",nullable=false)
 	private String turno;
 	
 	@ManyToOne
-	@JoinColumn(name= "numero_salon")
+	@JoinColumn(name= "numero_salon",nullable=false)
 	private Aula aula;
 	
 	@ManyToOne

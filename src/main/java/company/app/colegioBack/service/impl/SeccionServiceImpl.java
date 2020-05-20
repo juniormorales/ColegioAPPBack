@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import company.app.colegioBack.models.Nivel;
 import company.app.colegioBack.models.Seccion;
 import company.app.colegioBack.repo.SeccionRepo;
 import company.app.colegioBack.service.SeccionService;
@@ -62,6 +63,15 @@ public class SeccionServiceImpl implements SeccionService {
 			}else {
 				return false;
 			}
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public List<Seccion> listarPorNivel(Nivel nivel) {
+		try {
+			return repo.findByNivel(nivel);
 		}catch(Exception e) {
 			throw e;
 		}

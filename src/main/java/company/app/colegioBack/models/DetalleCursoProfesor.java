@@ -17,11 +17,11 @@ public class DetalleCursoProfesor {
 	private Integer idDetalleCursoProfesor;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_curso")
+	@JoinColumn(name = "id_curso",nullable=false)
 	private Curso curso;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_profesor")
+	@JoinColumn(name = "id_profesor",nullable=false)
 	private Profesor profesor;
 
 	public Integer getIdDetalleCursoProfesor() {

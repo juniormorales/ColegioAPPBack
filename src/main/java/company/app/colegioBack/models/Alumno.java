@@ -17,20 +17,21 @@ public class Alumno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAlumno;
 	
-	@Column(name = "promedio_general")
+	@Column(name = "promedio_general",nullable=false)
 	private Double promedioGeneral;
 	
-	@Column(name= "años_estudio")
+	@Column(name= "años_estudio",nullable=false)
 	private Integer ano_estudio;
 	
-	@Column(name = "nro_repitencias")
+	@Column(name = "nro_repitencias",nullable=false)
 	private Integer nro_repitencias;
 	
-	@Column(name= "estado")
+	//0 = No Matriculado, 1 = Matriculado, 2 = Repitente, 3 = Suspendido
+	@Column(name= "estado",nullable=false)
 	private Integer estado;
 	
 	@OneToOne
-	@JoinColumn(name = "id_persona")
+	@JoinColumn(name = "id_persona",nullable=false)
 	private Persona persona;
 
 	public Integer getIdAlumno() {

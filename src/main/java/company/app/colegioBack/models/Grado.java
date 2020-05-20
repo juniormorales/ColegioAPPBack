@@ -17,11 +17,11 @@ public class Grado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idGrado;
 	
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", nullable=false)
 	private String descripcion;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_nivel")
+	@JoinColumn(name = "id_nivel", nullable=false)
 	private Nivel nivel;
 
 	public String getDescripcion() {

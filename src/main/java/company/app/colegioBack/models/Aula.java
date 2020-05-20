@@ -15,13 +15,14 @@ public class Aula {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAula;
 	
-	@Column( name = "numero")
+	@Column( name = "numero", nullable=false)
 	private Integer numero;
 	
-	@Column( name ="capacidad")
+	@Column( name ="capacidad", nullable=false)
 	private Integer capacidad;
 	
-	@Column( name ="estado")
+	//false = no disponible , true=disponible
+	@Column( name ="estado", nullable=false)
 	private Boolean estado;
 
 	public Integer getIdAula() {

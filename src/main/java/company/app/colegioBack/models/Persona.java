@@ -23,6 +23,12 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPersona;
 	
+	@Column(name = "dni", nullable=false)
+	private Integer dni;
+	
+	@Column(name= "url_foto", nullable=true)
+	private String urlFoto;
+	
 	@Column(name = "nombres", nullable = false)
 	private String nombres;
 	
@@ -98,6 +104,22 @@ public class Persona {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
+	}
+
+	public String getUrlFoto() {
+		return urlFoto;
+	}
+
+	public void setUrlFoto(String urlFoto) {
+		this.urlFoto = urlFoto;
 	}
 	
 }

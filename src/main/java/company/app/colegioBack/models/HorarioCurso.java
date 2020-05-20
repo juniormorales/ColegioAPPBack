@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,12 +29,9 @@ public class HorarioCurso {
 	private String dias;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_curso", nullable = false)
-	private Curso curso;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_clase", nullable = false)
-	private Clase clase;
+	@JoinColumn(name = "id_curso_clase", nullable = false)
+	private DetalleClaseCurso detalleClaseCurso;
+
 	
 	public Integer getIdHorarioCurso() {
 		return idHorarioCurso;
@@ -69,20 +65,11 @@ public class HorarioCurso {
 		this.dias = dias;
 	}
 
-	public Curso getCurso() {
-		return curso;
+	public DetalleClaseCurso getDetalleClaseCurso() {
+		return detalleClaseCurso;
 	}
 
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
-
-	public Clase getClase() {
-		return clase;
-	}
-
-	public void setClase(Clase clase) {
-		this.clase = clase;
-	}
-	
+	public void setDetalleClaseCurso(DetalleClaseCurso detalleClaseCurso) {
+		this.detalleClaseCurso = detalleClaseCurso;
+	}	
 }

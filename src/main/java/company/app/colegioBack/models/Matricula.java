@@ -10,24 +10,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="alumnos_clases")
-public class DetalleAlumnoClase {
+@Table(name="matricula")
+public class Matricula {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idDetalleAlumnoClase;
+	private Integer idMatricula;
 	
-	@Column(name = "periodo", nullable=false)
+	@Column(nullable=false)
 	private Integer periodo;
 	
-	@Column(name = "promedio_anual",nullable=false)
+	@Column(nullable=false)
 	private Double promedioAnual;
 	
 	//0= Repitio, 1=Estudiando, 2=Aprobo
-	@Column(name= "estado_acabado",nullable=false)
+	@Column(nullable=false)
 	private Integer estadoAcabado;
 	
-	@Column(name = "observaciones",nullable=true)
+	// 0= Cancelado una parte, 1 = Cancelado total
+	@Column(nullable=false)
+	private Integer estadoDeuda;
+	
+	@Column(nullable=true)
 	private String observaciones;
 	
 	@ManyToOne
@@ -38,12 +42,12 @@ public class DetalleAlumnoClase {
 	@JoinColumn(name = "id_clase",nullable=false)
 	private Clase clase;
 
-	public Integer getIdDetalleAlumnoClase() {
-		return idDetalleAlumnoClase;
+	public Integer getIdMatricula() {
+		return idMatricula;
 	}
 
-	public void setIdDetalleAlumnoClase(Integer idDetalleAlumnoClase) {
-		this.idDetalleAlumnoClase = idDetalleAlumnoClase;
+	public void setIdMatricula(Integer idMatricula) {
+		this.idMatricula = idMatricula;
 	}
 
 	public Integer getPeriodo() {

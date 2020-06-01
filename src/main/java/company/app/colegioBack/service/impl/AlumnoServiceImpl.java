@@ -24,11 +24,11 @@ public class AlumnoServiceImpl implements AlumnoService {
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Alumno registrar(Alumno obj) {
+	public Alumno registrar(Alumno alumno) {
 		try {
-			Persona response_persona = repo_persona.save(obj.getPersona());
-			obj.setPersona(response_persona);
-			return repo.save(obj);
+			Persona response_per = repo_persona.save(alumno.getPersona());
+			alumno.setPersona(response_per);
+			return repo.save(alumno);
 		}catch(Exception e) {
 			throw e;
 		}

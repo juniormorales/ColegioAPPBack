@@ -19,6 +19,9 @@ public interface UtilitarioService {
 	public void insertarGrado(List<Grado> grados);
 	public void insertarSeccion(List<Seccion> seccion);
 	public void insertarNivel(List<Nivel> nivel);
-
+	public void insertarDepartamento();
+	public void insertarProvincia();
+	public void insertarDistrito();
+	public void insertarTipoZona();
 	
 }

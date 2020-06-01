@@ -112,4 +112,44 @@ public class UtilitarioServiceImpl implements UtilitarioService {
 		}	
 	}
 
+	@Override
+	public void insertarDepartamento() {
+		try {
+			repoUtilitario.insertarDepartamento();
+		}catch(Exception e) {
+			System.out.println(this.getClass().getSimpleName() + " insertarDepartamento. ERROR : " + e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public void insertarProvincia() {
+		try {
+			repoUtilitario.insertarProvincia();
+		}catch(Exception e) {
+			System.out.println(this.getClass().getSimpleName() + " insertarProvincia. ERROR : " + e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public void insertarDistrito() {
+		try {
+			repoUtilitario.insertarDistrito();
+		}catch(Exception e) {
+			System.out.println(this.getClass().getSimpleName() + " insertarDistrito. ERROR : " + e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public void insertarTipoZona() {
+		try {
+			repoUtilitario.insertarTipoZona();
+		}catch(Exception e) {
+			System.out.println(this.getClass().getSimpleName() + " insertarTipoZona. ERROR : " + e.getMessage());
+		}
+		
+	}
+
 }

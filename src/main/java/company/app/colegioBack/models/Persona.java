@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -23,26 +24,45 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPersona;
 	
-	@Column(name = "dni", nullable=false)
+	@Column(nullable=false)
 	private Integer dni;
 	
-	@Column(name= "url_foto", nullable=true)
+	@Column( nullable=true)
 	private String urlFoto;
 	
-	@Column(name = "nombres", nullable = false)
+	@Column(nullable = false)
 	private String nombres;
 	
-	@Column(name = "apellidos", nullable = false)
+	@Column(nullable = false)
 	private String apellidos;
 	
 	@Column(name = "fecha_nac", nullable = false)
 	private Date fechaNacimiento;
 	
-	@Column(name = "direccion", nullable = false)
+	@Column( nullable = false)
 	private String direccion;
 	
-	@Column(name = "sexo" , nullable = false)
+	@Column(nullable = false)
 	private String sexo;
+	
+	@Column(nullable=true)
+	private String telefono;
+	
+	@ManyToOne
+	@JoinColumn(name="id_departamento",nullable=false)
+	private Departamento departamento;
+	
+	@ManyToOne
+	@JoinColumn(name="id_provincia",nullable=false)
+	private Provincia provincia;
+	
+	@ManyToOne
+	@JoinColumn(name="id_distrito",nullable=false)
+	private Distrito distrito;
+	
+	@ManyToOne
+	@JoinColumn(name="id_tipzona",nullable=true)
+	private TipoZona tipoZona;
 	
 	@Transient
 	@JsonIgnore
@@ -120,6 +140,46 @@ public class Persona {
 
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public Provincia getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(Provincia provincia) {
+		this.provincia = provincia;
+	}
+
+	public Distrito getDistrito() {
+		return distrito;
+	}
+
+	public void setDistrito(Distrito distrito) {
+		this.distrito = distrito;
+	}
+
+	public TipoZona getTipoZona() {
+		return tipoZona;
+	}
+
+	public void setTipoZona(TipoZona tipoZona) {
+		this.tipoZona = tipoZona;
 	}
 	
 }

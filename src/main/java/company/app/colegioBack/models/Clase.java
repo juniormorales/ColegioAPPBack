@@ -21,8 +21,8 @@ public class Clase {
 	private String turno;
 	
 	@ManyToOne
-	@JoinColumn(name= "numero_salon",nullable=false)
-	private Aula aula;
+	@JoinColumn(name= "id_ambiente",nullable=false)
+	private Ambiente ambiente;
 	
 	@ManyToOne
 	@JoinColumn(name ="id_nivel", nullable = false)
@@ -35,7 +35,31 @@ public class Clase {
 	@ManyToOne
 	@JoinColumn(name ="id_seccion", nullable = false)
 	private Seccion seccion;
-	
+
+	public Integer getIdClases() {
+		return idClases;
+	}
+
+	public void setIdClases(Integer idClases) {
+		this.idClases = idClases;
+	}
+
+	public String getTurno() {
+		return turno;
+	}
+
+	public void setTurno(String turno) {
+		this.turno = turno;
+	}
+
+	public Ambiente getAmbiente() {
+		return ambiente;
+	}
+
+	public void setAmbiente(Ambiente ambiente) {
+		this.ambiente = ambiente;
+	}
+
 	public Nivel getNivel() {
 		return nivel;
 	}
@@ -51,22 +75,6 @@ public class Clase {
 	public void setGrado(Grado grado) {
 		this.grado = grado;
 	}
-	
-	public Integer getIdAula() {
-		return idClases;
-	}
-
-	public void setIdAula(Integer idAula) {
-		this.idClases = idAula;
-	}
-
-	public String getTurno() {
-		return turno;
-	}
-
-	public void setTurno(String turno) {
-		this.turno = turno;
-	}
 
 	public Seccion getSeccion() {
 		return seccion;
@@ -75,4 +83,6 @@ public class Clase {
 	public void setSeccion(Seccion seccion) {
 		this.seccion = seccion;
 	}
+	
+	
 }

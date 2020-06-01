@@ -17,14 +17,20 @@ public class Alumno {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAlumno;
 	
-	@Column(name = "promedio_general",nullable=false)
+	@Column(nullable=false)
 	private Double promedioGeneral;
 	
-	@Column(name= "años_estudio",nullable=false)
-	private Integer ano_estudio;
+	@Column(nullable=false)
+	private Integer anosEstudio;
 	
-	@Column(name = "nro_repitencias",nullable=false)
-	private Integer nro_repitencias;
+	@Column(nullable=false)
+	private Integer nroRepitencias;
+	
+	@Column(nullable=false)
+	private String familia;
+	
+	@Column(nullable=true)
+	private String colegioProcedencia;
 	
 	//0 = No Matriculado, 1 = Matriculado, 2 = Repitente, 3 = Suspendido
 	@Column(name= "estado",nullable=false)
@@ -50,20 +56,20 @@ public class Alumno {
 		this.promedioGeneral = promedioGeneral;
 	}
 
-	public Integer getAno_estudio() {
-		return ano_estudio;
+	public Integer getAnosEstudio() {
+		return anosEstudio;
 	}
 
-	public void setAno_estudio(Integer ano_estudio) {
-		this.ano_estudio = ano_estudio;
+	public void setAnosEstudio(Integer ano_estudio) {
+		this.anosEstudio = ano_estudio;
 	}
 
-	public Integer getNro_repitencias() {
-		return nro_repitencias;
+	public Integer getNroRepitencias() {
+		return nroRepitencias;
 	}
 
-	public void setNro_repitencias(Integer nro_repitencias) {
-		this.nro_repitencias = nro_repitencias;
+	public void setNroRepitencias(Integer nro_repitencias) {
+		this.nroRepitencias = nro_repitencias;
 	}
 
 	public Integer getEstado() {
@@ -82,5 +88,20 @@ public class Alumno {
 		this.persona = persona;
 	}
 
-	
+	public String getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(String familia) {
+		this.familia = familia;
+	}
+
+	public String getColegioProcedencia() {
+		return colegioProcedencia;
+	}
+
+	public void setColegioProcedencia(String colegioProcedencia) {
+		this.colegioProcedencia = colegioProcedencia;
+	}
+
 }

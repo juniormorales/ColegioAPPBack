@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import company.app.colegioBack.models.Aula;
-import company.app.colegioBack.repo.AulaRepo;
-import company.app.colegioBack.service.AulaService;
+import company.app.colegioBack.models.TipoAmbiente;
+import company.app.colegioBack.repo.TipoAmbienteRepo;
+import company.app.colegioBack.service.TipoAmbienteService;
 
 @Service
-public class AulaServiceImpl implements AulaService {
+public class TipoAmbienteServiceImpl implements TipoAmbienteService {
 	
 	@Autowired
-	AulaRepo repo;
-	
+	TipoAmbienteRepo repo;
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Aula registrar(Aula obj) {
+	public TipoAmbiente registrar(TipoAmbiente obj) {
 		try {
 			return repo.save(obj);
 		}catch(Exception e) {
@@ -29,7 +29,7 @@ public class AulaServiceImpl implements AulaService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Aula modificar(Aula obj) {
+	public TipoAmbiente modificar(TipoAmbiente obj) {
 		try {
 			return repo.save(obj);
 		}catch(Exception e) {
@@ -38,13 +38,13 @@ public class AulaServiceImpl implements AulaService {
 	}
 
 	@Override
-	public Aula leer(Integer id) {
+	public TipoAmbiente leer(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Aula> listar() {
+	public List<TipoAmbiente> listar() {
 		try {
 			return repo.findAll();
 		}catch(Exception e) {

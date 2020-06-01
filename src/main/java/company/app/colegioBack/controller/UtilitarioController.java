@@ -98,12 +98,23 @@ public class UtilitarioController {
 			service.insertarGrado(tmp_grado);
 			
 			List<Seccion> tmp_seccion = new ArrayList<>();
-			tmp_seccion.add(CrearSeccion("A"));
-			tmp_seccion.add(CrearSeccion("B"));
-			tmp_seccion.add(CrearSeccion("C"));
-			tmp_seccion.add(CrearSeccion("D"));
+			tmp_seccion.add(CrearSeccion("A",niv1));
+			tmp_seccion.add(CrearSeccion("B",niv1));
+			tmp_seccion.add(CrearSeccion("C",niv1));
+			tmp_seccion.add(CrearSeccion("D",niv1));
+			tmp_seccion.add(CrearSeccion("E",niv1));
+			tmp_seccion.add(CrearSeccion("A",niv2));
+			tmp_seccion.add(CrearSeccion("B",niv2));
+			tmp_seccion.add(CrearSeccion("C",niv2));
+			tmp_seccion.add(CrearSeccion("D",niv2));
 			
 			service.insertarSeccion(tmp_seccion);
+			service.insertarDepartamento();
+			service.insertarProvincia();
+			service.insertarDistrito();
+			service.insertarTipoZona();
+			
+			
 
 		} catch (Exception e) {
 
@@ -158,9 +169,10 @@ public class UtilitarioController {
 		return g;
 	}
 	
-	private Seccion CrearSeccion(String nombre) {
+	private Seccion CrearSeccion(String nombre,Nivel nivel) {
 		Seccion s = new Seccion();
 		s.setDescripcion(nombre);
+		s.setNivel(nivel);
 		return s;
 	}
 

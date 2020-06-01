@@ -5,15 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "aulas")
-public class Aula {
+@Table(name = "ambientes")
+public class Ambiente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idAula;
+	private Integer idAmbiente;
 	
 	@Column( name = "numero", nullable=false)
 	private Integer numero;
@@ -24,13 +26,17 @@ public class Aula {
 	//false = no disponible , true=disponible
 	@Column( name ="estado", nullable=false)
 	private Boolean estado;
+	
+	@ManyToOne
+	@JoinColumn(name="id_tipo_ambiente")
+	private TipoAmbiente tipoAmbiente;
 
-	public Integer getIdAula() {
-		return idAula;
+	public Integer getIdAmbiente() {
+		return idAmbiente;
 	}
 
-	public void setIdAula(Integer idAula) {
-		this.idAula = idAula;
+	public void setIdAmbiente(Integer idAula) {
+		this.idAmbiente = idAula;
 	}
 
 	public Integer getNumero() {
@@ -55,6 +61,14 @@ public class Aula {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
+	}
+
+	public TipoAmbiente getTipoAmbiente() {
+		return tipoAmbiente;
+	}
+
+	public void setTipoAmbiente(TipoAmbiente tipoAmbiente) {
+		this.tipoAmbiente = tipoAmbiente;
 	}
 	
 }

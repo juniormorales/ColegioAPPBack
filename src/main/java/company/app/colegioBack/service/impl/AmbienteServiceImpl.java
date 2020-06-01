@@ -1,25 +1,25 @@
 package company.app.colegioBack.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import company.app.colegioBack.models.Persona;
-import company.app.colegioBack.repo.PersonaRepo;
-import company.app.colegioBack.service.PersonaService;
+
+import company.app.colegioBack.models.Ambiente;
+import company.app.colegioBack.repo.AulaRepo;
+import company.app.colegioBack.service.AmbienteService;
 
 @Service
-public class PersonaServiceImpl implements PersonaService{
+public class AmbienteServiceImpl implements AmbienteService {
 	
 	@Autowired
-	PersonaRepo repo;
+	AulaRepo repo;
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Persona registrar(Persona obj) {
+	public Ambiente registrar(Ambiente obj) {
 		try {
 			return repo.save(obj);
 		}catch(Exception e) {
@@ -29,7 +29,7 @@ public class PersonaServiceImpl implements PersonaService{
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Persona modificar(Persona obj) {
+	public Ambiente modificar(Ambiente obj) {
 		try {
 			return repo.save(obj);
 		}catch(Exception e) {
@@ -38,17 +38,13 @@ public class PersonaServiceImpl implements PersonaService{
 	}
 
 	@Override
-	public Persona leer(Integer id) {
-		try {
-			Optional<Persona> op  = repo.findById(id);
-			return op.isPresent() ? op.get() : new Persona();
-		}catch(Exception e) {
-			throw e;
-		}
+	public Ambiente leer(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public List<Persona> listar() {
+	public List<Ambiente> listar() {
 		try {
 			return repo.findAll();
 		}catch(Exception e) {

@@ -8,14 +8,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import company.app.colegioBack.models.Ambiente;
-import company.app.colegioBack.repo.AulaRepo;
+import company.app.colegioBack.repo.AmbienteRepo;
 import company.app.colegioBack.service.AmbienteService;
 
 @Service
 public class AmbienteServiceImpl implements AmbienteService {
 	
 	@Autowired
-	AulaRepo repo;
+	AmbienteRepo repo;
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
@@ -62,6 +62,15 @@ public class AmbienteServiceImpl implements AmbienteService {
 			}else {
 				return false;
 			}
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public Ambiente buscarPorNumero(Integer numero) {
+		try {
+			return repo.findByNumero(numero);
 		}catch(Exception e) {
 			throw e;
 		}

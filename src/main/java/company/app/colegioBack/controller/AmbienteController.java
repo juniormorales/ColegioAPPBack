@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +29,7 @@ public class AmbienteController {
 	AmbienteService service;
 	
 	@GetMapping("/listar")
-	public ResponseEntity<?> listarAulas(){
+	public ResponseEntity<?> listarAmbientes(){
 		Map<String,Object> response = new HashMap<>();
 		try {
 			List<Ambiente> lsAmbiente = service.listar();
@@ -42,7 +45,7 @@ public class AmbienteController {
 	}
 	
 	@PostMapping("/registrar")
-	public ResponseEntity<?> registrarAula(@RequestBody Ambiente ambiente){
+	public ResponseEntity<?> registrarAmbiente(@RequestBody Ambiente ambiente){
 		Map<String,Object> response = new HashMap<>();
 		try {
 			Ambiente resp = service.registrar(ambiente);
@@ -55,5 +58,37 @@ public class AmbienteController {
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@PutMapping("/actualizar")
+	public ResponseEntity<?> actualizarAmbiente(@RequestBody Ambiente ambiente){
+		Map<String,Object> response = new HashMap<>();
+		try {
+			Ambiente resp = service.modificar(ambiente);
+			response.put("mensaje", Constantes.msgActualizarAmbienteOk);
+			response.put("defaultObj", resp);
+			
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
+		}catch(DataAccessException e) {
+			response.put("mensaje", Constantes.msgActualizarAmbienteError);
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@DeleteMapping("/eliminar/{id}")
+	public ResponseEntity<?> eliminarAmbiente(@PathVariable Integer id) {
+		Map<String, Object> response = new HashMap<>();
+
+		Boolean resp = service.eliminar(id);
+		if (resp) {
+			response.put("estado",Constantes.valTransaccionOk);
+			response.put("mensaje", Constantes.msgEliminarOk);
+
+		} else {
+			response.put("estado",Constantes.valTransaccionNoEncontro);
+			response.put("mensaje", Constantes.msgEliminarError);
+		}
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.ACCEPTED);
 	}
 }

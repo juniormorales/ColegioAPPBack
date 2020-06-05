@@ -71,5 +71,9 @@ public class Constantes {
 	public static final String errorRegistroFoto = "Error al guardar la foto en la Base de Datos";
 	public static final String errorLecturaFoto = "Error al intentar leer la foto";
 	public static final String errorCargarFoto = "No se pudo cargar la imagen o no es legible";
+	
+	//Eliminar
+	public static final String msgEliminarOk = "El registro se ha eliminado correctamente";
+	public static final String msgEliminarError = "El registro que se quiere eliminar no existe o ya ha sido eliminado de la base de datos";
 
 }

@@ -17,14 +17,14 @@ public class Ambiente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idAmbiente;
 	
-	@Column( name = "numero", nullable=false)
+	@Column( nullable=false)
 	private Integer numero;
 	
-	@Column( name ="capacidad", nullable=false)
+	@Column(nullable=false)
 	private Integer capacidad;
 	
 	//false = no disponible , true=disponible
-	@Column( name ="estado", nullable=false)
+	@Column(nullable=false)
 	private Boolean estado;
 	
 	@ManyToOne

@@ -64,6 +64,14 @@ public class Constantes {
 	public static final String msgActualizarTipoAmbienteOk = "El tipo de ambiente se ha actualizado correctamente";
 	public static final String msgActualizarTipoAmbienteError = "Error al actualizar el tipo de ambiente en la base de datos";
 	
+	//Clase
+	public static final String msgListarClasesOk = "Se listaron las clases correctamente";
+	public static final String msgListarClasesError = "Error al listar las clases";
+	public static final String msgRegistrarClaseOk = "La clase se ha registrado correctamente";
+	public static final String msgRegistrarClaseError ="Error al registrar la clase en la base de datos";
+	public static final String msgActualizarClaseOk = "La clase se ha actualizado correctamente";
+	public static final String msgActualizarClaseError ="Error al actualizar la clase en la base de datos";
+	
 	//Rutas
 	public static final String rutasImagenAlumno = "src/main/resources/Uploads/Alumnos";
 	

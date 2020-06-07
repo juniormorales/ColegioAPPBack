@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import company.app.colegioBack.models.Clase;
+import company.app.colegioBack.models.Nivel;
 import company.app.colegioBack.service.ClaseService;
 import company.app.colegioBack.util.Constantes;
 
@@ -98,6 +99,23 @@ public class ClaseController {
 			response.put("mensaje", Constantes.msgEliminarErrorGrave);
 			response.put("error", e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PostMapping("/listarPorNivel")
+	public ResponseEntity<?> listarPorNivel(@RequestBody Nivel nivel){
+		Map<String,Object> response = new HashMap<>();
+
+		try {
+			List<Clase> lsClase = service.listarPorNivel(nivel);
+			response.put("mensaje",Constantes.msgListarClasesOk);
+			response.put("aaData",lsClase);
+			
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+		} catch (Exception e) {
+			response.put("mensaje",Constantes.msgListarClasesError);
+			response.put("error",e.getMessage());
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

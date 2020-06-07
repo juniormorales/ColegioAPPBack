@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import company.app.colegioBack.models.Clase;
+import company.app.colegioBack.models.Nivel;
 import company.app.colegioBack.repo.ClaseRepo;
 import company.app.colegioBack.service.ClaseService;
 
@@ -62,6 +63,15 @@ public class ClaseServiceImpl implements ClaseService {
 			}else {
 				return false;
 			}
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public List<Clase> listarPorNivel(Nivel nivel) {
+		try {
+			return repo.findByNivel(nivel);
 		}catch(Exception e) {
 			throw e;
 		}

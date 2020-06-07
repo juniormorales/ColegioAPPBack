@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import company.app.colegioBack.models.Ambiente;
-import company.app.colegioBack.repo.AmbienteRepo;
-import company.app.colegioBack.service.AmbienteService;
+import company.app.colegioBack.models.Turno;
+import company.app.colegioBack.repo.TurnoRepo;
+import company.app.colegioBack.service.TurnoService;
 
 @Service
-public class AmbienteServiceImpl implements AmbienteService {
+public class TurnoServiceImpl implements TurnoService {
 	
 	@Autowired
-	AmbienteRepo repo;
-	
+	TurnoRepo repo;
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Ambiente registrar(Ambiente obj) {
+	public Turno registrar(Turno obj) {
 		try {
 			return repo.save(obj);
 		}catch(Exception e) {
@@ -29,7 +29,7 @@ public class AmbienteServiceImpl implements AmbienteService {
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-	public Ambiente modificar(Ambiente obj) {
+	public Turno modificar(Turno obj) {
 		try {
 			return repo.save(obj);
 		}catch(Exception e) {
@@ -38,13 +38,13 @@ public class AmbienteServiceImpl implements AmbienteService {
 	}
 
 	@Override
-	public Ambiente leer(Integer id) {
+	public Turno leer(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Ambiente> listar() {
+	public List<Turno> listar() {
 		try {
 			return repo.findAll();
 		}catch(Exception e) {
@@ -62,24 +62,6 @@ public class AmbienteServiceImpl implements AmbienteService {
 			}else {
 				return false;
 			}
-		}catch(Exception e) {
-			throw e;
-		}
-	}
-
-	@Override
-	public Ambiente buscarPorNumero(Integer numero) {
-		try {
-			return repo.findByNumero(numero);
-		}catch(Exception e) {
-			throw e;
-		}
-	}
-
-	@Override
-	public List<Ambiente> listarAmbientesDisponibles() {
-		try {
-			return repo.findByEstado(true);
 		}catch(Exception e) {
 			throw e;
 		}

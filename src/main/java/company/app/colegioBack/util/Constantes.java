@@ -72,6 +72,14 @@ public class Constantes {
 	public static final String msgActualizarClaseOk = "La clase se ha actualizado correctamente";
 	public static final String msgActualizarClaseError ="Error al actualizar la clase en la base de datos";
 	
+	//Turno
+	public static final String msgListarTurnosOk = "Se listaron los turnos correctamente";
+	public static final String msgListarTurnosError = "Error al listar los turnos";
+	public static final String msgRegistrarTurnoOk = "El turno se ha registrado correctamente";
+	public static final String msgRegistrarTurnoError = "Error al registrar el turno en la base de datos";
+	public static final String msgActualizarTurnoOk = "El turno se ha actualizado correctamente";
+	public static final String msgActualizarTurnoError = "Error al actualizar el turno en la base de datos";
+	
 	//Rutas
 	public static final String rutasImagenAlumno = "src/main/resources/Uploads/Alumnos";
 	
@@ -83,5 +91,8 @@ public class Constantes {
 	//Eliminar
 	public static final String msgEliminarOk = "El registro se ha eliminado correctamente";
 	public static final String msgEliminarError = "El registro que se quiere eliminar no existe o ya ha sido eliminado de la base de datos";
+	public static final String msgEliminarErrorGrave = "No se puede eliminar el registro";
+	
+	
 
 }

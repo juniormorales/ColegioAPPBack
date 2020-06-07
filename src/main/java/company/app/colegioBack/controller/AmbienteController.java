@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,6 +35,22 @@ public class AmbienteController {
 		Map<String,Object> response = new HashMap<>();
 		try {
 			List<Ambiente> lsAmbiente = service.listar();
+			response.put("mensaje", Constantes.msgListarAmbientesOk);
+			response.put("aaData",lsAmbiente);
+			
+			return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
+		}catch(Exception e) {
+			response.put("mensaje", Constantes.msgListarAmbientesError);
+			response.put("error", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/listarDisponibles")
+	public ResponseEntity<?> listarAmbientesDisponibles(){
+		Map<String,Object> response = new HashMap<>();
+		try {
+			List<Ambiente> lsAmbiente = service.listarAmbientesDisponibles();
 			response.put("mensaje", Constantes.msgListarAmbientesOk);
 			response.put("aaData",lsAmbiente);
 			
@@ -79,16 +97,21 @@ public class AmbienteController {
 	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> eliminarAmbiente(@PathVariable Integer id) {
 		Map<String, Object> response = new HashMap<>();
+		try {
+			Boolean resp = service.eliminar(id);
+			if (resp) {
+				response.put("estado",Constantes.valTransaccionOk);
+				response.put("mensaje", Constantes.msgEliminarOk);
 
-		Boolean resp = service.eliminar(id);
-		if (resp) {
-			response.put("estado",Constantes.valTransaccionOk);
-			response.put("mensaje", Constantes.msgEliminarOk);
-
-		} else {
-			response.put("estado",Constantes.valTransaccionNoEncontro);
-			response.put("mensaje", Constantes.msgEliminarError);
+			} else {
+				response.put("estado",Constantes.valTransaccionNoEncontro);
+				response.put("mensaje", Constantes.msgEliminarError);
+			}
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.ACCEPTED);
+		}catch(DataIntegrityViolationException e) {
+			response.put("mensaje", Constantes.msgEliminarErrorGrave);
+			response.put("error", e.getMostSpecificCause().getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.ACCEPTED);
 	}
 }

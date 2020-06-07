@@ -18,9 +18,7 @@ public class TipoZonaServiceImpl implements TipoZonaService{
 
 	@Autowired
 	TipoZonaRepo repo;
-	
-	private static final Logger LOG = LoggerFactory.getLogger(Exception.class);
-	
+		
 	@Override
 	public TipoZona registrar(TipoZona obj) {
 		// TODO Auto-generated method stub
@@ -44,7 +42,6 @@ public class TipoZonaServiceImpl implements TipoZonaService{
 		try {
 			return repo.findAll();
 		}catch(Exception e) {
-			LOG.error(this.getClass().getSimpleName()+" listarTipoZona. ERROR : "+e.getMessage());
 			throw e;
 		}
 	}

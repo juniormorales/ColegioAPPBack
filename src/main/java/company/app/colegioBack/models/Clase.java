@@ -1,6 +1,5 @@
 package company.app.colegioBack.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +16,6 @@ public class Clase {
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private Integer idClases;
 	
-	@Column(name = "turno",nullable=false)
-	private String turno;
-	
 	@ManyToOne
 	@JoinColumn(name= "id_ambiente",nullable=false)
 	private Ambiente ambiente;
@@ -35,6 +31,10 @@ public class Clase {
 	@ManyToOne
 	@JoinColumn(name ="id_seccion", nullable = false)
 	private Seccion seccion;
+	
+	@ManyToOne
+	@JoinColumn(name ="id_turno", nullable = false)
+	private Turno turno;
 
 	public Integer getIdClases() {
 		return idClases;
@@ -42,14 +42,6 @@ public class Clase {
 
 	public void setIdClases(Integer idClases) {
 		this.idClases = idClases;
-	}
-
-	public String getTurno() {
-		return turno;
-	}
-
-	public void setTurno(String turno) {
-		this.turno = turno;
 	}
 
 	public Ambiente getAmbiente() {
@@ -83,6 +75,13 @@ public class Clase {
 	public void setSeccion(Seccion seccion) {
 		this.seccion = seccion;
 	}
-	
+
+	public Turno getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
 	
 }
